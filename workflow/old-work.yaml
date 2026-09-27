@@ -1,0 +1,338 @@
+name: OldWork
+meaning: 昔の仕事
+type: work
+subject: idea
+actor: planner
+era: pre_ai
+principle: >-
+  Ideas do not arrive at the desk. They arrive on the way, in the toilet, in
+  the bath, and they are lost there. The old work is the long labour of
+  carrying them back by hand, and most of them are dropped on the way.
+
+organ_principle: >-
+  一つの厨房に四つの器官がある。湯を沸かすもの、掬うもの、焼くもの、
+  盛り付けるもの。どれも独立に成立するが、順番を飛ばすと台無しになる。
+  自然に湧く場所（馬上・トイレ・風呂）は、名前で呼べばブレストである。
+  名前をつける前の同じ器官だった。
+
+operations:
+  label: 器官の峻別
+  note: 混同はすべてここから起きる。一つの器官を他で代替することはできない。
+  list:
+    - id: brainstorm
+      name: ブレスト
+      metaphor: 湧かす／材料を出す
+      acts_on: nothing_yet
+      at_stage: receive
+      temperature_c: 42
+      temperature_name: 熱湯
+      asks: 何も聞かない
+      produces: 大量の未加工
+      discards: 全部
+      contract: >-
+        出一道ごとに片付ける。選別はしない。選別は後の器官の仕事。
+      natural_form:
+        - 馬上
+        - トイレ
+        - 風呂
+      is_named_in_old_work: false
+    - id: kabeuchi
+      name: 壁打ち
+      metaphor: バケツで掬う／外化
+      acts_on: somewhat_formed
+      at_stage: [recall, speak, write]
+      temperature_c: 38
+      temperature_name: 微熱湯
+      asks: ほんとにそうなのか
+      produces: 気づく
+      discards: まだ決まっていないこと
+      contract: >-
+        ある程度形になったものを外化し、筋が通っているかを確認する。
+        ひとりで考えると変わらない。話すと変わる。そこが価値で、それが目的。
+    - id: grill
+      name: グリル
+      metaphor: 炭火で焼き切る
+      acts_on: kabeuchi_output
+      at_stage: decide
+      temperature_c: 15
+      temperature_name: 冷水
+      asks: 前提は間違っていないか
+      produces: 食べれる状態
+      discards: 曖昧
+      contract: 焼き切る。焼き切るために焦がすのを許す。
+    - id: tsumete
+      name: 詰める
+      metaphor: 盛り付ける
+      acts_on: grilled
+      at_stage: [sort, decide]
+      temperature_c: 15
+      temperature_name: 冷水
+      asks: 一問ずつ
+      produces: 順序と仕様
+      discards: 選択肢
+      contract: 一問ずつ・推奨回答を添える・逃げ道を作らない
+
+chain:
+  - brainstorm
+  - kabeuchi
+  - grill
+  - tsumete
+  - eat
+chain_note: >-
+  掬료를飛ばして焼くと、焼けるものは何もない。
+  掬っただけの未確定のモノは、冷ましても硬いまま残る。
+
+planner:
+  role: 企画を担い手
+  job: >-
+    アイデアを出す仕事ではない。アイデアは誰にでも湧く。企画の仕事は
+    「これ、できそうだ」と伝えられる形にすること。前提を言語化し、対象と
+    期待を定義し、崩れる場所を見つけ、優先順位をつけ、他の人が動く言葉にする。
+  job_is_not:
+    - アイデアを出すこと
+    - 面白さを作ること
+    - 決定すること
+  diagnosis:
+    why_plans_fail: >-
+      企画が頓着になるのは、たいてい「前提が言えていない」ことと
+      「弱点を自分では認めない」こと。どちらも外部に出さない限り気づけない。
+  stages:
+    - id: premise
+      name: 前提を言語化する
+      organ: kabeuchi
+    - id: audience
+      name: 対象と期待を定義する
+      organ: kabeuchi
+    - id: weakness
+      name: 崩れる場所を見つける
+      organ: kabeuchi
+    - id: priority
+      name: 何を捨てるかを決める
+      organ: grill
+    - id: wording
+      name: 他の人が動く言葉にする
+      organ: tsumete
+  note: >-
+    企画の仕事の前半3工程が壁打ち、後半2工程がグリル・詰める。
+    planner として最も効くのは 1 と 3。2 は 1 が決まらないと書けない。
+
+vocations:
+  label: 職種（planner の型）
+  note: 同じ壁打ちでも型が変わると、判断の物差しと証拠が変わる。
+  list:
+    - id: pdm_editor
+      name: PdM editor
+      answers_to: 買う人（reader）
+      proof: 市場（反応・既存作）
+      unit_of_time: release
+      fragility: 前提が言葉にならない
+      what_breaks: 「誰かatical に響く」が書けないまま_right 支撑が立つ
+    - id: idol_producer
+      name: idol-producer
+      answers_to: 推し（客・応援）
+      proof: 会場（客数・温度・ Arts）
+      unit_of_time: week
+      fragility: 感覚（自分の推しと客の推しがズレる）
+      what_breaks: 「誰に刺さり、誰に刺さらない」が言えないまま Leg plan だけ増える
+  common: >-
+    どちらも「前提が言えていない」ことで死に、「崩れる場所」を自分からは
+    見ないことで死ぬ。型が変わっても死法は同じ。だから器官は共有できる。
+
+why_speaking_changes_thinking:
+  label: 为什么会変るか
+  claim: 話すと変わる。ひとりでは変わらない。
+  mechanism:
+    - name: 頭の中は可変・撤回可能
+      detail: >-
+        自分の偏見は自分で監視できない。書けばなおさら自分の管理下に
+        隠れるので、気づけないまま確定する。
+    - name: 声に出すと記憶が自分の外に出る
+      detail: >-
+        政局した言葉は自分の記憶ではなく「他人の記憶」に入る。
+        発した瞬間に改竄できない。取り消せない。
+    - name: だから自己監視が物理的に不可能になる
+      detail: 嘘がつけない条件下では、仮説は 스스로检証される。
+  consequence: >-
+    気づく は壁打ちの産物ではない。外部化の副作用である。
+    したがって成果物（企画書）を評価指標にしてはいけない。
+  not_reproducible_by:
+    - 一人で書くこと
+    - 書き起こしすること
+    - 画面に向かうこと
+  evidence_required: 話す相手がもう一人いること
+
+sources:
+  label: 発生（元になる場所）
+  note: >-
+    None of these is work. They are the only places ideas actually appear.
+    Duration is the whole difference between them.
+  places:
+    - id: desk
+      name: 仕事
+      duration: long
+      temperature_c: 37
+      state: intentional
+      generates_by: effort
+      retention: low
+      reason: 作業中に出たものは仕事の中に埋もれて自分自身のものにならない
+    - id: on_the_way
+      name: 馬上
+      duration: zero
+      temperature_c: 37.5
+      state: idle_hands
+      generates_by: release
+      retention: none
+      reason: 紙がない。手が動いているから頭が緩まない。手も止まっていない
+    - id: toilet
+      name: トイレ
+      duration: short
+      temperature_c: 39
+      state: accidental
+      generates_by: descent
+      retention: low
+      reason: 完全にプライベートだが残らない。家族にも上司にも言えない
+    - id: bath
+      name: 風呂
+      duration: long
+      temperature_c: 41
+      state: dissociated
+      generates_by: return
+      retention: none
+      reason: >-
+        前意識から昇ってくる。量を作って溶かす。湯から出れば形を持たず消える。
+        最も多く、最も長い。もっとも記録されない。
+
+cycle:
+  - receive
+  - carry
+  - recall
+  - speak
+  - write
+  - sort
+  - decide
+  - drop
+
+activities:
+  - id: receive
+    name: 拾う
+    requires: consciousness
+    output: 断片
+  - id: carry
+    name: 持ち帰る
+    requires: memory
+    output: 断片（減衰）
+  - id: recall
+    name: 思い出す
+    requires: trigger
+    output: 再構成された断片
+  - id: speak
+    name: 起こす
+    requires: an_interlocutor
+    output: 言葉になった断片
+  - id: write
+    name: 落とす
+    requires: a_medium
+    output: 文字
+  - id: sort
+    name: 並べる
+    requires: many
+    output: 順序
+  - id: decide
+    name: 決める
+    requires: a_criterion
+    output: 確定
+  - id: drop
+    name: 捨てる
+    requires: nothing
+    output: 残骸
+
+leaks:
+  note: 失われる量は、この工程のどれかで必ず起きる
+  points:
+    - at: receive
+      loss: 量
+      severity: high
+    - at: carry
+      loss: 形
+      severity: high
+    - at: recall
+      loss: 由来
+      severity: critical
+    - at: write
+      loss: 順序
+      severity: medium
+
+kabeuchi:
+  role: bucket
+  is_not: place
+  sits_at:
+    - recall
+    - speak
+    - write
+  never_at:
+    - receive
+    - decide
+  temperature_c: 38
+  purpose: 気づく
+  value_is_in: the_speaker_changed
+  not_in: the_artifact
+  serves_planner_stage:
+    - premise
+    - audience
+    - weakness
+  outputs:
+    - 気づく（本人の認識が動いたこと）← これが本体
+    - 起こされた断片
+    - 前提として言語化された文
+    - 崩れる場所として名指しされた弱点
+    - 並べ替え前の未確定な素材
+  does_not_output:
+    - 決定
+    - 答え
+    - advice
+    - 優先順位
+  does_not_measure:
+    - 企画書の完成度
+  generate_itself: false
+  note: >-
+    壁打ちは温泉ではない。発生は風呂・馬上・トイレで起きる。壁打ちは
+    その湯を掬うバケツである。バケツは湯を沸かさない。発生までやると
+    仕事になり、湧きを止める。最初の数分は黙る。
+
+tsumete:
+  role: cold_shower
+  sits_at:
+    - decide
+  temperature_c: 15
+  provides: recommendation
+  contract: 一問ずつ・推奨回答を添える・逃げ道を作らない
+
+grill:
+  role: cold_shower
+  sits_at:
+    - decide
+  temperature_c: 15
+  provides: recommendation
+  voice: それは前提が間違っている
+  note: >-
+    決定工程専用の器官。発生の場で使うと卵を殺す。契約の差は温度差であり、
+    契約差でもある。起こすな、復唱だけ、掘れ。
+
+rules:
+  - a_bucket_does_not_boil_water
+  - purpose_is_noticing_not_a_document
+  - the_artifact_is_a_side_effect
+  - ask_nothing_for_the_first_minutes
+  - mirror_do_not_interrogate
+  - never_decide
+  - never_attach_recommendation
+  - never_manufacture_objection
+  - questions_must_change_understanding
+  - temperature_does_not_change_within_a_session
+
+feedback:
+  source: carry
+  target: receive
+  note: >-
+    失ったものは失ったとして記録する。取り戻すことは本作業ではない。
+    何がどこで失われたかが唯一の学習材料になる。
